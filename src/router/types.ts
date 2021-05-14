@@ -1,7 +1,7 @@
 /*
  * @Author: ykx
  * @Date: 2021-05-11 15:40:11
- * @LastEditTime: 2021-05-11 17:11:47
+ * @LastEditTime: 2021-05-12 11:05:49
  * @LastEditors: your name
  * @Description:
  * @FilePath: \my-vue-app\src\router\types.ts
@@ -20,6 +20,6 @@ export interface AppRouteRecordRaw extends Omit<RouteRecordRaw, "meta"> {
   component?: Component | string;
   components?: Component;
   children?: AppRouteRecordRaw[];
-  props?: Recordable;
+  props?: Recordable; // ??如何理解Recordable
   fullPath?: string;
 }

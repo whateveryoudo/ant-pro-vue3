@@ -1,23 +1,32 @@
 /*
  * @Author: ykx
  * @Date: 2021-05-11 15:38:21
- * @LastEditTime: 2021-05-11 17:39:13
+ * @LastEditTime: 2021-05-13 10:04:18
  * @LastEditors: your name
  * @Description:
- * @FilePath: \my-vue-app\src\router\routes.ts
+ * @FilePath: \ant-pro-vue3\src\router\routes.ts
  */
 import type { AppRouteRecordRaw } from "./types";
 import { PageEnums } from "/@/enums/pageEnums";
-const Login = import("/@/views/login/index.vue");
-// const Home = import("@/views/home/index.vue");
+const Login = () => import("/@/views/login/index.vue");
+const Dashboard = () => import("/@/views/dashboard/index.vue");
+const asyncRoutes = [
+  {
+    path: "/dashboard",
+    component: Dashboard,
+    name: "Dashboard",
+    meta: { title: "看板" },
+  },
+];
 
 export const RootRoute: AppRouteRecordRaw = {
   path: "/",
-  name: 'Root',
+  name: "Root",
   redirect: PageEnums.BASE_HOME,
   meta: {
     title: "Root",
   },
+  children: [],
 };
 export const LoginRoute: AppRouteRecordRaw = {
   path: "/login",
@@ -27,4 +36,4 @@ export const LoginRoute: AppRouteRecordRaw = {
     title: "登录页",
   },
 };
-export const basicRoutes = [LoginRoute, RootRoute];
+export const basicRoutes = [LoginRoute, RootRoute, ...asyncRoutes];
